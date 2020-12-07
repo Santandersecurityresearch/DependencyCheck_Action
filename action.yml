@@ -1,0 +1,23 @@
+name: 'Dependency_check action'
+inputs:
+    project:
+        required: true
+    path:
+        required: true  
+    format:
+        required: true
+steps:
+    - uses: actions/checkout@v2
+    - name: Dependency check action     
+      uses: 'docker://??:latest'
+      with:
+          args:
+            - '--project'
+            - '${{ inputs.project }}'
+            - '--scan'
+            - '${{ inputs.path }}'
+            - '--format' 
+            - '${{ inputs.format }}'
+            - '--out'
+            -  '/github/workspace/reports'
+            - '--noupdate'
